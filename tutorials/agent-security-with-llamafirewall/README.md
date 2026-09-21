@@ -1,3 +1,5 @@
+> 📄 中文版：[README.zh.md](README.zh.md)
+
 ![](https://europe-west1-atp-views-tracker.cloudfunctions.net/working-analytics?notebook=tutorials--agent-security-with-llamafirewall--readme)
 
 # LlamaFirewall For AI Agents Security Tutorial

@@ -1,3 +1,5 @@
+> 📄 中文版：[README.zh.md](README.zh.md)
+
 ![](https://europe-west1-atp-views-tracker.cloudfunctions.net/working-analytics?notebook=tutorials--kotlin-agent-with-koog--readme)
 
 # Building AI Agents in Kotlin with Koog
