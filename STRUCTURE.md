@@ -64,7 +64,7 @@ agents-towards-production/
   - **数据流**：`State` / `EnhancedState` 是唯一状态对象（`text` / `classification` / `entities` / `summary` / `sentiment`）。每个节点只读 `state["text"]` 拼 prompt，返回 `{"字段": 值}` 作为**局部更新**合并回 state；`app.invoke()` 返回完整 state dict，外部按 `result["classification"]` 取值
   - **控制流**：前两个阶段纯线性；第三阶段有 1 个条件边，判据是分类结果是否 `in ["news", "research"]`
   - **循环与交互**：无循环。每次 `invoke()` 都是一次性单遍执行
-- **关键文件**：`langgraph_tutorial.ipynb`（主教程：逐步构建 + 可视化 + 条件路由）
+- **关键文件**：`langgraph_tutorial.ipynb`（主教程：逐步构建 + 可视化 + 条件路由）；`README.md` + `01-mental-model.md` ~ `05-pitfalls.md`（本地新增的**心智模型与拆解方法**指南：讲清图/State/节点、数据流与控制流、自主度阶梯 L0–L3、从需求到图的 5 步拆解法）
 - **外部依赖**：OpenAI API key；LangGraph、LangChain、langchain-openai
 
 #### 2. [fastapi-agent](tutorials/fastapi-agent/) — 把 Agent 封装成生产级 HTTP API
@@ -561,7 +561,7 @@ tutorials/  ──► 教程 A（自包含）
 
 ## 七、本地新增内容（非原始仓库）
 
-以下内容是在原仓库基础上本地新增的，**不属于 Nir Diamant 的原始项目**。目前已全部提交在分支 **`add-chinese-translations`** 上：
+以下内容是在原仓库基础上本地新增的，**不属于 Nir Diamant 的原始项目**。目前已提交在分支 **`study`** 上：
 
 | 内容 | 说明 | 是否进 git |
 |---|---|---|
@@ -570,6 +570,8 @@ tutorials/  ──► 教程 A（自包含）
 | [README.zh.md](README.zh.md) · [STRUCTURE.md](STRUCTURE.md) | 中文根 README、本文档 | 已提交 |
 | 45 个英文原文件 | 补上指向中文版的**正向链接** | 已提交 |
 | `tutorials/agent-with-streamlit-ui/app_deepseek.py` | DeepSeek/内网网关适配版（原 `app.py` 是 OpenAI 版） | 已提交 |
+| [tutorials/fixed-vs-autonomous-expense/](tutorials/fixed-vs-autonomous-expense/) | 可跑的对比实验：同一套报销审核业务，A 版全固定 vs B 版「固定骨架 + 自主格子」 | 已提交 |
+| [tutorials/LangGraph-agent/](tutorials/LangGraph-agent/) 下的 `README.md` + `01-mental-model.md` ~ `05-pitfalls.md` | LangGraph 心智模型与拆解方法（6 篇指南） | 已提交 |
 | `tutorials/agent-with-streamlit-ui/.env` | 存 `DEEPSEEK_API_KEY` | ⚠️ **被忽略，未提交** |
 | `tutorials/agent-with-streamlit-ui/venv/` | Python 虚拟环境 | 被忽略 |
 
@@ -582,6 +584,6 @@ tutorials/  ──► 教程 A（自包含）
 1. 读 [README.md](README.md) 的「Introduction」和「Tutorials」两节 → 拿到主题地图
 2. 读 [CONTRIBUTING.md](CONTRIBUTING.md) → 理解单个教程的标准结构
 3. 挑一个代表性教程深入：
-   - 学核心框架 → [LangGraph-agent](tutorials/LangGraph-agent/)
+   - 学核心框架 → [LangGraph-agent](tutorials/LangGraph-agent/)（先读目录里的 [README.md](tutorials/LangGraph-agent/README.md) 指南，再跑 notebook）
    - 学 API 化 → [fastapi-agent](tutorials/fastapi-agent/)（唯一带 tests 的工程化教程）
 4. 之后按兴趣主题扫其余教程，先看各自的 README 建立概念即可
